@@ -43,6 +43,8 @@ class RouteServiceProvider extends ServiceProvider
             if (!$player) {
                 try {
                     UpdatePlayerStatsFromOsrsHighscoresApi::dispatchSync($username);
+
+                    $player = Player::where('username', $username)->first();
                 } catch (\Throwable $th) {
                     return abort(404);
                 }

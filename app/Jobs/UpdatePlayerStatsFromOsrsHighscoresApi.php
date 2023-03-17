@@ -23,7 +23,7 @@ class UpdatePlayerStatsFromOsrsHighscoresApi implements ShouldQueue
      */
     public function __construct(string $player = 'LunaarSky')
     {
-        $this->player = strtolower($player);
+        $this->player = strtolower(urldecode($player));
     }
 
     /**
@@ -31,7 +31,7 @@ class UpdatePlayerStatsFromOsrsHighscoresApi implements ShouldQueue
      */
     public function handle(): void
     {
-        $response = Http::get("https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player={$this->player}");
+        $response = Http::get("https://secure.runescape.com/m=hiscore_oldschool/index_lite.ws?player=" . urlencode($this->player));
 
         if ($response->failed()) {
             throw new \Exception("Error Processing Request", 1);
