@@ -17,10 +17,6 @@ return new class extends Migration
             $table->string('username');
             $table->timestamps();
         });
-
-        Player::create([
-            'username' => 'lunaarsky'
-        ]);
     }
 
     /**
