@@ -13,10 +13,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command(UpdateStats::class, ['lunaarsky'])->daily();
-        $schedule->command(UpdateStats::class, ['lunasky'])->daily();
-        $schedule->command(UpdateStats::class, ['sakadisnoot'])->daily();
-        $schedule->command(UpdateStats::class, ['nurfmenow'])->daily();
+        $schedule->command(UpdateStats::class)->daily();
     }
 
     /**

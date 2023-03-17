@@ -19,9 +19,9 @@ use Illuminate\Support\Str;
 |
 */
 
-Route::get('/players/{player:username}', [PlayersController::class, 'show']);
+Route::get('/players/{osrsUsername}', [PlayersController::class, 'show']);
 
-Route::get('/players/{player:username}/skills/{skill}', [SkillsController::class, 'show']);
+Route::get('/players/{osrsUsername}/skills/{skill}', [SkillsController::class, 'show']);
 
 // Route::get('/stat-snapshots/{statSnapshot}', [StatShapshotsController::class, 'show']);
 
