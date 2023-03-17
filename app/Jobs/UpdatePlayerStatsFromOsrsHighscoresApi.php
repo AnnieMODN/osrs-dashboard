@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Models\StatSnapshot;
+use App\Models\Player;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -23,7 +23,7 @@ class UpdatePlayerStatsFromOsrsHighscoresApi implements ShouldQueue
      */
     public function __construct(string $player = 'LunaarSky')
     {
-        $this->player = $player;
+        $this->player = strtolower($player);
     }
 
     /**
@@ -45,7 +45,10 @@ class UpdatePlayerStatsFromOsrsHighscoresApi implements ShouldQueue
             })
             ->toArray();
 
-        StatSnapshot::create([
+        // Get player name, check if its in the players table, if not add to players table. Add player id to stats snapshot
+        $player = Player::firstOrCreate(['username' => $this->player]);
+
+        $player->statSnapshots()->create([
             'overall_rank' => $data[0],
             'overall_level' => $data[1],
             'overall_xp' => $data[2],
@@ -118,6 +121,137 @@ class UpdatePlayerStatsFromOsrsHighscoresApi implements ShouldQueue
             'construction_rank' => $data[69],
             'construction_level' => $data[70],
             'construction_xp' => $data[71],
+        ]);
+
+        $player->minigameStatSnapshots()->create([
+            'bounty_hunter_rank' => $data[74],
+            'bounty_hunter_score' => $data[75],
+            'bounty_hunter_rogue_rank' => $data[76],
+            'bounty_hunter_rogue_score' => $data[77],
+            'clue_scrolls_all_rank' => $data[78],
+            'clue_scrolls_all_score' => $data[79],
+            'clue_scrolls_beginner_rank' => $data[80],
+            'clue_scrolls_beginner_score' => $data[81],
+            'clue_scrolls_easy_rank' => $data[82],
+            'clue_scrolls_easy_score' => $data[83],
+            'clue_scrolls_medium_rank' => $data[84],
+            'clue_scrolls_medium_score' => $data[85],
+            'clue_scrolls_hard_rank' => $data[86],
+            'clue_scrolls_hard_score' => $data[87],
+            'clue_scrolls_elite_rank' => $data[88],
+            'clue_scrolls_elite_score' => $data[89],
+            'clue_scrolls_master_rank' => $data[90],
+            'clue_scrolls_master_score' => $data[91],
+            'lms_rank_rank' => $data[92],
+            'lms_rank_score' => $data[93],
+            'pvp_arena_rank' => $data[94],
+            'pvp_arena_score' => $data[95],
+            'soul_wars_zeal_rank' => $data[96],
+            'soul_wars_zeal_score' => $data[97],
+            'rifts_closed_rank' => $data[98],
+            'rifts_closed_score' => $data[99],
+            'abyssal_sire_rank' => $data[100],
+            'abyssal_sire_score' => $data[101],
+            'alchemical_hydra_rank' => $data[102],
+            'alchemical_hydra_score' => $data[103],
+            'barrows_chests_rank' => $data[104],
+            'barrows_chests_score' => $data[105],
+            'bryophyta_rank' => $data[106],
+            'bryophyta_score' => $data[107],
+            'callisto_rank' => $data[108],
+            'callisto_score' => $data[109],
+            'cerberus_rank' => $data[110],
+            'cerberus_score' => $data[111],
+            'chambers_of_xeric_rank' => $data[112],
+            'chambers_of_xeric_score' => $data[113],
+            'chambers_of_xeric_challenge_mode_rank' => $data[114],
+            'chambers_of_xeric_challenge_mode_score' => $data[115],
+            'chaos_elemental_rank' => $data[116],
+            'chaos_elemental_score' => $data[117],
+            'chaos_fanatic_rank' => $data[118],
+            'chaos_fanatic_score' => $data[119],
+            'commander_zilyana_rank' => $data[120],
+            'commander_zilyana_score' => $data[121],
+            'corporeal_beast_rank' => $data[122],
+            'corporeal_beast_score' => $data[123],
+            'crazy_archaeologist_rank' => $data[124],
+            'crazy_archaeologist_score' => $data[125],
+            'dagannoth_prime_rank' => $data[126],
+            'dagannoth_prime_score' => $data[127],
+            'dagannoth_rex_rank' => $data[128],
+            'dagannoth_rex_score' => $data[129],
+            'dagannoth_supreme_rank' => $data[130],
+            'dagannoth_supreme_score' => $data[131],
+            'deranged_archaeologist_rank' => $data[132],
+            'deranged_archaeologist_score' => $data[133],
+            'general_graador_rank' => $data[134],
+            'general_graador_score' => $data[135],
+            'giant_mole_rank' => $data[136],
+            'giant_mole_score' => $data[137],
+            'grotesque_guardians_rank' => $data[138],
+            'grotesque_guardians_score' => $data[139],
+            'hespori_rank' => $data[140],
+            'hespori_score' => $data[141],
+            'kalphite_queen_rank' => $data[142],
+            'kalphite_queen_score' => $data[143],
+            'king_black_dragon_rank' => $data[144],
+            'king_black_dragon_score' => $data[145],
+            'kraken_rank' => $data[146],
+            'kraken_score' => $data[147],
+            'kreearra_rank' => $data[148],
+            'kreearra_score' => $data[149],
+            'krill_tsutsaroth_rank' => $data[150],
+            'krill_tsutsaroth_score' => $data[151],
+            'mimic_rank' => $data[152],
+            'mimic_score' => $data[153],
+            'nex_rank' => $data[154],
+            'nex_score' => $data[155],
+            'nightmare_rank' => $data[156],
+            'nightmare_score' => $data[157],
+            'phosanis_nightmare_rank' => $data[158],
+            'phosanis_nightmare_score' => $data[159],
+            'obor_rank' => $data[160],
+            'obor_score' => $data[161],
+            'phantom_muspah_rank' => $data[162],
+            'phantom_muspah_score' => $data[163],
+            'sarachnis_rank' => $data[164],
+            'sarachnis_score' => $data[165],
+            'scorpia_rank' => $data[166],
+            'scorpia_score' => $data[167],
+            'skotizo_rank' => $data[168],
+            'skotizo_score' => $data[169],
+            'tempoross_rank' => $data[170],
+            'tempoross_score' => $data[171],
+            'the_gauntlet_rank' => $data[172],
+            'the_gauntlet_score' => $data[173],
+            'the_corrupted_gauntlet_rank' => $data[174],
+            'the_corrupted_gauntlet_score' => $data[175],
+            'theatre_of_blood_rank' => $data[176],
+            'theatre_of_blood_score' => $data[177],
+            'theatre_of_blood_hard_mode_rank' => $data[178],
+            'theatre_of_blood_hard_mode_score' => $data[179],
+            'thermonuclear_smoke_devil_rank' => $data[180],
+            'thermonuclear_smoke_devil_score' => $data[181],
+            'tombs_of_amascut_rank' => $data[182],
+            'tombs_of_amascut_score' => $data[183],
+            'tombs_of_amascut_expert_mode_rank' => $data[184],
+            'tombs_of_amascut_expert_mode_score' => $data[185],
+            'tzkal_zuk_rank' => $data[186],
+            'tzkal_zuk_score' => $data[187],
+            'tztok_jad_rank' => $data[188],
+            'tztok_jad_score' => $data[189],
+            'venenatis_rank' => $data[190],
+            'venenatis_score' => $data[191],
+            'vetion_rank' => $data[192],
+            'vetion_score' => $data[193],
+            'vorkath_rank' => $data[194],
+            'vorkath_score' => $data[195],
+            'wintertodt_rank' => $data[196],
+            'wintertodt_score' => $data[197],
+            'zolcano_rank' => $data[198],
+            'zolcano_score' => $data[199],
+            'zulrah_rank' => $data[200],
+            'zulrah_score' => $data[201]
         ]);
     }
 }

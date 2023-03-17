@@ -9,6 +9,6 @@ class StatShapshotsController extends Controller
 {
     public function show(StatSnapshot $statSnapshot)
     {
-        dd($statSnapshot);
+        // dd($statSnapshot);
     }
 }
