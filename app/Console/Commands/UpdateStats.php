@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Jobs\UpdatePlayerStatsFromOsrsHighscoresApi;
+use App\Models\Player;
 use Illuminate\Console\Command;
 
 class UpdateStats extends Command
@@ -12,7 +13,7 @@ class UpdateStats extends Command
      *
      * @var string
      */
-    protected $signature = 'osrs:update-stats {user=LunaarSky}';
+    protected $signature = 'osrs:update-stats {player?}';
 
     /**
      * The console command description.
@@ -26,6 +27,14 @@ class UpdateStats extends Command
      */
     public function handle(): void
     {
-        UpdatePlayerStatsFromOsrsHighscoresApi::dispatch($this->argument('user'));
+        if ($this->argument('player')) {
+            UpdatePlayerStatsFromOsrsHighscoresApi::dispatch($this->argument('player'));
+        } else {
+            Player::orderBy('id')->chunk(50, function ($players) {
+                $players->each(function ($player) {
+                    UpdatePlayerStatsFromOsrsHighscoresApi::dispatch($player->username);
+                });
+            });
+        }
     }
 }

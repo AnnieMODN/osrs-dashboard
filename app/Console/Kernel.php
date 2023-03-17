@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(UpdateStats::class, ['lunaarsky'])->daily();
         $schedule->command(UpdateStats::class, ['lunasky'])->daily();
         $schedule->command(UpdateStats::class, ['sakadisnoot'])->daily();
+        $schedule->command(UpdateStats::class, ['nurfmenow'])->daily();
     }
 
     /**
