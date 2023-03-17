@@ -17,7 +17,11 @@ return new class extends Migration
             $table->foreignId('player_id')->after('id')->nullable()->constrained();
         });
 
-        StatSnapshot::get()->update(['player_id' => Player::first()->id]);
+        $player = Player::create([
+            'username' => 'lunaarsky'
+        ]);
+
+        StatSnapshot::get()->update(['player_id' => $player->id]);
     }
 
     /**
