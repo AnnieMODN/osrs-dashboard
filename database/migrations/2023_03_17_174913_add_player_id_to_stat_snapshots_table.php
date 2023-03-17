@@ -21,7 +21,7 @@ return new class extends Migration
             'username' => 'lunaarsky'
         ]);
 
-        StatSnapshot::get()->update(['player_id' => $player->id]);
+        StatSnapshot::update(['player_id' => $player->id]);
     }
 
     /**
