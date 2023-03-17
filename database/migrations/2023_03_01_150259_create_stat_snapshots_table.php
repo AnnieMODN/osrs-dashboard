@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('stat_snapshots', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('player_id')->constrained();
             $table->bigInteger('overall_xp');
             $table->bigInteger('overall_rank');
             $table->bigInteger('overall_level');
