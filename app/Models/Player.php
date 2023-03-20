@@ -21,4 +21,10 @@ class Player extends Model
     {
         return $this->hasMany(MinigameStatSnapshot::class);
     }
+
+    public function refreshable()
+    {
+        return $this->statSnapshots()->latest('updated_at')->first()->updated_at
+            ->lessThanOrEqualTo(now()->subMinutes(30));
+    }
 }

@@ -17,20 +17,22 @@
 <body class="antialiased">
     <div class="relative min-h-screen bg-blue-200 bg-center sm:flex sm:items-center sm:justify-center">
         <div class="mx-auto w-full p-6 lg:w-3/4 lg:p-8">
-            <h1 class="mb-6 flex justify-center text-2xl font-semibold">{{ ucfirst($skill) }} Stats</h1>
+            <h1 class="mb-6 flex justify-center text-2xl font-semibold">{{ Str::headline(ucfirst($minigame)) }} Minigame
+                /
+                Boss</h1>
 
             <div class="flex justify-center">
                 <a class="underline" href="/players/{{ $player->username }}">Back to Dashboard</a>
             </div>
 
-            <div class="my-8 grid gap-4 md:grid-cols-2 md:gap-8 lg:my-16 lg:grid-cols-3 lg:gap-4">
+            <div class="my-8 grid gap-4 md:grid-cols-2 md:gap-8 lg:my-16 lg:gap-4">
                 <div class="rounded-md bg-white p-8 shadow-sm">
-                    <p class="mb-2 text-2xl">{{ ucfirst($skill) }} Level</p>
+                    <p class="mb-2 text-2xl">{{ Str::headline(ucfirst($minigame)) }} Score</p>
                     <div class="flex items-center">
                         <p class="mr-4 text-3xl font-bold">
-                            {{ number_format($statsData->getAttribute("{$skill}_level"), 0, '.', ',') }}/<span>99</span>
+                            {{ number_format($minigameData->getAttribute("{$minigame}_score"), 0, '.', ',') }}
                         </p>
-                        @if ($statsData->getAttribute("{$skill}_level") == 99)
+                        @if ($minigameData->getAttribute("{$minigame}_level") == 99)
                             <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="25" height="25"
                                 fill="#ff9c66" stroke="#ff9c66" viewBox="0 0 512 512">
                                 <g>
@@ -48,14 +50,10 @@
                     </div>
                 </div>
                 <div class="rounded-md bg-white p-8 shadow-sm">
-                    <p class="mb-2 text-2xl">{{ ucfirst($skill) }} XP</p>
+                    <p class="mb-2 text-2xl">{{ Str::headline(ucfirst($minigame)) }} Rank</p>
                     <p class="w-full text-3xl font-bold">
-                        {{ number_format($statsData->getAttribute("{$skill}_xp"), 0, '.', ',') }}</p>
-                </div>
-                <div class="rounded-md bg-white p-8 shadow-sm">
-                    <p class="mb-2 text-2xl">{{ ucfirst($skill) }} Rank</p>
-                    <p class="w-full text-3xl font-bold">
-                        {{ number_format($statsData->getAttribute("{$skill}_rank"), 0, '.', ',') }}</p>
+                        {{ number_format($minigameData->getAttribute("{$minigame}_rank"), 0, '.', ',') }}
+                    </p>
                 </div>
             </div>
 
@@ -75,8 +73,8 @@
                                     marker: false,
                                 },
                                 series: [{
-                                    name: '{{ ucfirst($skill) }} XP',
-                                    data: {{ Js::from($skillXpGraphData) }},
+                                    name: '{{ ucfirst($minigame) }} XP',
+                                    data: {{ Js::from($minigameXpGraphData) }},
                                 }],
                                 xaxis: {
                                     type: 'datetime',
@@ -120,8 +118,8 @@
                                     marker: false,
                                 },
                                 series: [{
-                                    name: '{{ ucfirst($skill) }} Rank',
-                                    data: {{ Js::from($skillRankGraphData) }},
+                                    name: '{{ ucfirst($minigame) }} Rank',
+                                    data: {{ Js::from($minigameRankGraphData) }},
                                 }],
                                 xaxis: {
                                     type: 'datetime',
@@ -154,7 +152,6 @@
 
             </div>
         </div>
-    </div>
 </body>
 
 </html>

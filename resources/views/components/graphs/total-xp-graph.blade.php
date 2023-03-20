@@ -1,6 +1,5 @@
-<div
-    x-data="{
-        init() {
+<div x-data="{
+    init() {
             let chart = new ApexCharts(this.$refs.chart, this.options)
 
             chart.render()
@@ -20,28 +19,26 @@
                 },
                 yaxis: {
                     labels: {
-                        formatter: function (val, opt) {
+                        formatter: function(val, opt) {
                             return Intl.NumberFormat('en-GB', {
-                                notation:'compact',
-                                maximumFractionDigits: 2
-                            })
-                            .format(val);
+                                    notation: 'compact',
+                                    maximumFractionDigits: 2
+                                })
+                                .format(val);
                         }
                     }
                 },
                 dataLabels: {
-                    formatter: function (val, opt) {
+                    formatter: function(val, opt) {
                         return Intl.NumberFormat('en-GB', {
-                            notation:'compact',
-                            maximumFractionDigits: 2
-                        })
-                        .format(val);
+                                notation: 'compact',
+                                maximumFractionDigits: 2
+                            })
+                            .format(val);
                     }
                 }
             }
         }
-    }"
-    class="w-full"
->
-    <div x-ref="chart" class="rounded-lg bg-white p-8 shadow-sm"></div>
+}" class="w-full">
+    <div x-ref="chart" class="rounded-lg bg-white px-2 py-4 shadow-sm lg:p-8"></div>
 </div>

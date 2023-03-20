@@ -1,4 +1,4 @@
-<div class="row-span-2 h-auto w-full rounded-lg bg-white p-8 shadow-sm">
+<div class="row-span-2 h-auto w-full rounded-lg bg-white p-4 shadow-sm lg:p-8">
     <div class="mb-6 flex flex-col text-center text-xl font-bold">Minigame Completions / Boss Kills for
         {{ $player->username }}</div>
 

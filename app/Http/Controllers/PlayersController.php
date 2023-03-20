@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\UpdatePlayerStatsFromOsrsHighscoresApi;
 use App\Models\Player;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -56,5 +57,16 @@ class PlayersController extends Controller
             'statLevels' => $statLevels,
             'groupedStats' => $groupedStats
         ]);
+    }
+
+    public function refresh(Player $player)
+    {
+        if (!$player->refreshable()) {
+            return redirect()->back();
+        }
+
+        UpdatePlayerStatsFromOsrsHighscoresApi::dispatch($player->username);
+
+        return redirect()->back();
     }
 }

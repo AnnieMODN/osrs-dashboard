@@ -1,6 +1,5 @@
-<div
-    x-data="{
-        init() {
+<div x-data="{
+    init() {
             let chart = new ApexCharts(this.$refs.chart, this.options)
 
             {{-- var chart = new ApexCharts(document.querySelector('#chart'), options);
@@ -31,12 +30,13 @@
                         }
                     }
                 }],
+                legend: {
+                    show: false,
+                },
                 series: {{ Js::from(array_values($statLevels)) }},
                 labels: {{ Js::from(array_keys($statLevels)) }},
             }
         }
-    }"
-    class="w-full"
->
+}" class="hidden w-full md:block">
     <div x-ref="chart" class="rounded-lg bg-white p-8 shadow-sm"></div>
 </div>

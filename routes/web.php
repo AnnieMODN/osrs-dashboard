@@ -1,9 +1,8 @@
 <?php
 
+use App\Http\Controllers\MinigameStatsSnapshotController;
 use App\Http\Controllers\PlayersController;
 use App\Http\Controllers\SkillsController;
-use App\Http\Controllers\StatShapshotsController;
-use App\Models\StatSnapshot;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
@@ -20,10 +19,10 @@ use Illuminate\Support\Str;
 */
 
 Route::get('/players/{osrsUsername}', [PlayersController::class, 'show']);
+Route::post('/players/{osrsUsername}/refresh', [PlayersController::class, 'refresh']);
 
 Route::get('/players/{osrsUsername}/skills/{skill}', [SkillsController::class, 'show']);
-
-// Route::get('/stat-snapshots/{statSnapshot}', [StatShapshotsController::class, 'show']);
+Route::get('/players/{osrsUsername}/minigames/{minigame}', [MinigameStatsSnapshotController::class, 'show']);
 
 Route::get('test', function () {
     // $response = Http::get('https://templeosrs.com/api/player_stats.php?player=lunaarsky');
