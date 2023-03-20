@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Player;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class MinigameStatsSnapshotController extends Controller
 {
     public function show(Player $player, $minigame)
     {
+        $minigame = Str::of($minigame)->replace('-', '_')->snake()->toString();
+
         $minigameData = $player->minigameStatSnapshots()->latest()->first(["{$minigame}_score", "{$minigame}_rank"]);
         $minigameXpGraphData = $player->minigameStatSnapshots()->orderBy('created_at')->get(["{$minigame}_score", 'created_at'])
             ->map(function ($minigameSnapshot) use ($minigame) {

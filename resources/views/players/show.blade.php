@@ -35,13 +35,15 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 gap-4 md:gap-8 lg:grid-cols-2 lg:gap-12">
+            <div class="grid grid-cols-1 items-start gap-4 md:gap-8 lg:grid-cols-2 lg:gap-12">
 
                 <x-graphs.total-xp-graph :totalXPGraphData="$totalXPGraphData"></x-graphs.total-xp-graph>
 
-                <x-tables.total-stats-table :groupedStats="$latestStatSnapshot" :player="$player"></x-tables.total-stats-table>
+                <div></div>
 
-                <x-graphs.total-stat-levels :statLevels="$statLevels"></x-graphs.total-stat-levels>
+                {{-- <x-graphs.total-stat-levels :statLevels="$statLevels"></x-graphs.total-stat-levels> --}}
+
+                <x-tables.total-stats-table :groupedStats="$latestStatSnapshot" :player="$player"></x-tables.total-stats-table>
 
                 <x-tables.total-boss-kills-table :latestMinigameStatSnapshots="$latestMinigameStatSnapshots" :player="$player">
                 </x-tables.total-boss-kills-table>
