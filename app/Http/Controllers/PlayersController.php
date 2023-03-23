@@ -25,11 +25,21 @@ class PlayersController extends Controller
             })
             ->toArray();
 
+        $totalRankGraphData = $player->statSnapshots()->orderBy('created_at')->get(['overall_rank', 'created_at'])
+            ->map(function ($statSnapshot) {
+                return [
+                    'x' => $statSnapshot->created_at->toDateString(),
+                    'y' => $statSnapshot->overall_rank
+                ];
+            })
+            ->toArray();
+
         return view('players.show', [
             'player' => $player,
             'latestStatSnapshot' => $latestStatSnapshot,
             'statSnapshotLast7Days' => $statSnapshotLast7Days,
             'totalXPGraphData' => $totalXPGraphData,
+            'totalRankGraphData' => $totalRankGraphData,
         ]);
     }
 

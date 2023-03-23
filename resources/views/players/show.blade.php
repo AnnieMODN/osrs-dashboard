@@ -58,7 +58,7 @@
 
             <div class="grid grid-cols-1 items-start gap-4 md:gap-8 lg:grid-cols-2 lg:gap-12">
                 <x-graphs.total-xp-graph :totalXPGraphData="$totalXPGraphData"></x-graphs.total-xp-graph>
-                <x-graphs.total-rank-graph :totalRankGraphData="$totalXPGraphData"></x-graphs.total-rank-graph>
+                <x-graphs.total-rank-graph :totalRankGraphData="$totalRankGraphData"></x-graphs.total-rank-graph>
                 <div class="space-y-4">
                     <x-tables.total-stats-table :statSnapshot="$latestStatSnapshot" :player="$player"></x-tables.total-stats-table>
 
