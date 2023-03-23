@@ -44,14 +44,14 @@
                     class="rounded-lg bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6 lg:p-8">
                     <p class="mb-2 text-2xl">Overall XP:</p>
                     <p class="w-full text-3xl font-bold">
-                        {{ $latestStatSnapshot->overall_xp }}
+                        {{ $latestStatSnapshot->overall_xp > 0 ? number_format($latestStatSnapshot->overall_xp, 0, '.', ',') : 'N/A' }}
                     </p>
                 </div>
                 <div
                     class="rounded-lg bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6 lg:p-8">
                     <p class="mb-2 text-2xl">Total Rank:</p>
                     <p class="w-full text-3xl font-bold">
-                        {{ $latestStatSnapshot->overall_rank }}
+                        {{ $latestStatSnapshot->overall_rank > 0 ? number_format($latestStatSnapshot->overall_rank, 0, '.', ',') : 'N/A' }}
                     </p>
                 </div>
             </div>
