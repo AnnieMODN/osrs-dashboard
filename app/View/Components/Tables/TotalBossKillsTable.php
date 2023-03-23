@@ -8,16 +8,16 @@ use Illuminate\View\Component;
 
 class TotalBossKillsTable extends Component
 {
-    public $latestMinigameStatSnapshots;
+    public $latestBossStatSnapshots;
     public $player;
     /**
      * Create a new component instance.
      */
     public function __construct(
-        $latestMinigameStatSnapshots,
+        $latestBossStatSnapshots,
         $player
     ) {
-        $this->latestMinigameStatSnapshots = $latestMinigameStatSnapshots;
+        $this->latestBossStatSnapshots = $latestBossStatSnapshots;
         $this->player = $player;
     }
 

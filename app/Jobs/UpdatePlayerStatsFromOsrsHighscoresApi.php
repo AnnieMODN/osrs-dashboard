@@ -121,9 +121,6 @@ class UpdatePlayerStatsFromOsrsHighscoresApi implements ShouldQueue
             'construction_rank' => $data[69],
             'construction_level' => $data[70],
             'construction_xp' => $data[71],
-        ]);
-
-        $player->minigameStatSnapshots()->create([
             'bounty_hunter_rank' => $data[74],
             'bounty_hunter_score' => $data[75],
             'bounty_hunter_rogue_rank' => $data[76],

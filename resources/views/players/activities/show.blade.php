@@ -20,22 +20,22 @@
         <div class="w-full">
 
             <h2 class="mx-auto max-w-2xl text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                {{ ucfirst($skill) }} Stats
+                {{ Str::headline(ucfirst($activity)) }}
             </h2>
 
             <div class="mt-8 flex justify-center">
                 <a class="text-white underline" href="/players/{{ $player->username }}">Back to Profile</a>
             </div>
 
-            <div class="my-8 grid gap-4 md:grid-cols-2 md:gap-8 lg:my-16 lg:grid-cols-3 lg:gap-4">
+            <div class="my-8 grid gap-4 md:grid-cols-2 md:gap-8 lg:my-16 lg:gap-4">
                 <div
                     class="rounded-lg bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6 lg:p-8">
-                    <p class="mb-2 text-2xl">{{ ucfirst($skill) }} Level</p>
+                    <p class="mb-2 text-2xl">{{ Str::headline(ucfirst($activity)) }} Score</p>
                     <div class="flex items-center">
                         <p class="mr-4 text-3xl font-bold">
-                            {{ $statsData->getAttribute("{$skill}_level") > 0 ? number_format($statsData->getAttribute("{$skill}_level"), 0, '.', ',') : 'N/A' }}/<span>99</span>
+                            {{ $activityData->getAttribute("{$activity}_score") > 0 ? number_format($activityData->getAttribute("{$activity}_score"), 0, '.', ',') : 'N/A' }}
                         </p>
-                        @if ($statsData->getAttribute("{$skill}_level") == 99)
+                        @if ($activityData->getAttribute("{$activity}_level") == 99)
                             <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="25" height="25"
                                 fill="#ff9c66" stroke="#ff9c66" viewBox="0 0 512 512">
                                 <g>
@@ -54,16 +54,9 @@
                 </div>
                 <div
                     class="rounded-lg bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6 lg:p-8">
-                    <p class="mb-2 text-2xl">{{ ucfirst($skill) }} XP</p>
+                    <p class="mb-2 text-2xl">{{ Str::headline(ucfirst($activity)) }} Rank</p>
                     <p class="w-full text-3xl font-bold">
-                        {{ $statsData->getAttribute("{$skill}_xp") > 0 ? number_format($statsData->getAttribute("{$skill}_xp"), 0, '.', ',') : 'N/A' }}
-                    </p>
-                </div>
-                <div
-                    class="rounded-lg bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6 lg:p-8">
-                    <p class="mb-2 text-2xl">{{ ucfirst($skill) }} Rank</p>
-                    <p class="w-full text-3xl font-bold">
-                        {{ $statsData->getAttribute("{$skill}_rank") > 0 ? number_format($statsData->getAttribute("{$skill}_rank"), 0, '.', ',') : 'N/A' }}
+                        {{ $activityData->getAttribute("{$activity}_rank") > 0 ? number_format($activityData->getAttribute("{$activity}_rank"), 0, '.', ',') : 'N/A' }}
                     </p>
                 </div>
             </div>
@@ -84,8 +77,8 @@
                                     marker: false,
                                 },
                                 series: [{
-                                    name: '{{ ucfirst($skill) }} XP',
-                                    data: {{ Js::from($skillXpGraphData) }},
+                                    name: '{{ ucfirst($activity) }} XP',
+                                    data: {{ Js::from($activityXpGraphData) }},
                                 }],
                                 xaxis: {
                                     type: 'datetime',
@@ -130,8 +123,8 @@
                                     marker: false,
                                 },
                                 series: [{
-                                    name: '{{ ucfirst($skill) }} Rank',
-                                    data: {{ Js::from($skillRankGraphData) }},
+                                    name: '{{ ucfirst($activity) }} Rank',
+                                    data: {{ Js::from($activityRankGraphData) }},
                                 }],
                                 xaxis: {
                                     type: 'datetime',
@@ -165,7 +158,6 @@
 
             </div>
         </div>
-    </div>
 </body>
 
 </html>

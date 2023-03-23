@@ -17,11 +17,6 @@ class Player extends Model
         return $this->hasMany(StatSnapshot::class);
     }
 
-    public function minigameStatSnapshots()
-    {
-        return $this->hasMany(MinigameStatSnapshot::class);
-    }
-
     public function refreshable()
     {
         return $this->statSnapshots()->latest('updated_at')->first()->updated_at

@@ -12,7 +12,7 @@
                 },
                 series: [{
                     name: 'Total XP',
-                    data: {{ Js::from($totalXPGraphData) }},
+                    data: {{ Js::from($totalRankGraphData) }},
                 }],
                 xaxis: {
                     type: 'datetime',

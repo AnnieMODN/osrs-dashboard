@@ -6,19 +6,21 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class TotalStatsTable extends Component
+class TotalActivitiesTable extends Component
 {
-    public $statSnapshot;
+    public $latestActivityStatSnapshots;
+    public $activitySnapshotLast7Days;
     public $player;
-
     /**
      * Create a new component instance.
      */
     public function __construct(
-        $statSnapshot,
-        $player
+        $latestActivityStatSnapshots,
+        $activitySnapshotLast7Days,
+        $player,
     ) {
-        $this->statSnapshot = $statSnapshot;
+        $this->latestActivityStatSnapshots = $latestActivityStatSnapshots;
+        $this->activitySnapshotLast7Days = $activitySnapshotLast7Days;
         $this->player = $player;
     }
 
@@ -27,6 +29,6 @@ class TotalStatsTable extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.tables.total-stats-table');
+        return view('components.tables.total-activities-table');
     }
 }

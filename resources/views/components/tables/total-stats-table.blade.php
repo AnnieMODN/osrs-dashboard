@@ -1,4 +1,5 @@
-<div class="row-span-2 h-auto w-full rounded-lg bg-white p-4 shadow-sm lg:p-8">
+<div
+    class="row-span-2 h-auto w-full rounded-lg bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6 lg:p-8">
     <div class="mb-6 flex flex-col text-center text-xl font-bold">Personal stats for {{ $player->username }}</div>
     <table class="w-full overflow-x-auto">
         <tr>
@@ -12,13 +13,13 @@
             <td></td>
             <td class="text-left">Overall</td>
             <td class="text-right">
-                {{ $groupedStats->overall_rank > 0 ? number_format($groupedStats->overall_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->overall_rank > 0 ? number_format($statSnapshot->overall_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->overall_level > 0 ? number_format($groupedStats->overall_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->overall_level > 0 ? number_format($statSnapshot->overall_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->overall_xp > 0 ? number_format($groupedStats->overall_xp, 0, '.', ',') : 'N/A' }}</td>
+                {{ $statSnapshot->overall_xp > 0 ? number_format($statSnapshot->overall_xp, 0, '.', ',') : 'N/A' }}</td>
 
         </tr>
         <tr>
@@ -30,13 +31,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->attack_rank > 0 ? number_format($groupedStats->attack_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->attack_rank > 0 ? number_format($statSnapshot->attack_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->attack_level > 0 ? number_format($groupedStats->attack_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->attack_level > 0 ? number_format($statSnapshot->attack_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->attack_xp > 0 ? number_format($groupedStats->attack_xp, 0, '.', ',') : 'N/A' }}</td>
+                {{ $statSnapshot->attack_xp > 0 ? number_format($statSnapshot->attack_xp, 0, '.', ',') : 'N/A' }}</td>
         </tr>
         <tr>
             <td></td>
@@ -47,13 +48,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->defence_rank > 0 ? number_format($groupedStats->defence_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->defence_rank > 0 ? number_format($statSnapshot->defence_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->defence_level > 0 ? number_format($groupedStats->defence_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->defence_level > 0 ? number_format($statSnapshot->defence_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->defence_xp > 0 ? number_format($groupedStats->defence_xp, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->defence_xp > 0 ? number_format($statSnapshot->defence_xp, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>
@@ -65,13 +66,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->strength_rank > 0 ? number_format($groupedStats->strength_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->strength_rank > 0 ? number_format($statSnapshot->strength_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->strength_level > 0 ? number_format($groupedStats->strength_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->strength_level > 0 ? number_format($statSnapshot->strength_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->strength_xp > 0 ? number_format($groupedStats->strength_xp, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->strength_xp > 0 ? number_format($statSnapshot->strength_xp, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>
@@ -83,13 +84,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->hitpoints_rank > 0 ? number_format($groupedStats->hitpoints_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->hitpoints_rank > 0 ? number_format($statSnapshot->hitpoints_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->hitpoints_level > 0 ? number_format($groupedStats->hitpoints_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->hitpoints_level > 0 ? number_format($statSnapshot->hitpoints_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->hitpoints_xp > 0 ? number_format($groupedStats->hitpoints_xp, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->hitpoints_xp > 0 ? number_format($statSnapshot->hitpoints_xp, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>
@@ -101,13 +102,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->ranged_rank > 0 ? number_format($groupedStats->ranged_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->ranged_rank > 0 ? number_format($statSnapshot->ranged_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->ranged_level > 0 ? number_format($groupedStats->ranged_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->ranged_level > 0 ? number_format($statSnapshot->ranged_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->ranged_xp > 0 ? number_format($groupedStats->ranged_xp, 0, '.', ',') : 'N/A' }}</td>
+                {{ $statSnapshot->ranged_xp > 0 ? number_format($statSnapshot->ranged_xp, 0, '.', ',') : 'N/A' }}</td>
         </tr>
         <tr>
             <td></td>
@@ -118,13 +119,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->prayer_rank > 0 ? number_format($groupedStats->prayer_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->prayer_rank > 0 ? number_format($statSnapshot->prayer_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->prayer_level > 0 ? number_format($groupedStats->prayer_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->prayer_level > 0 ? number_format($statSnapshot->prayer_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->prayer_xp > 0 ? number_format($groupedStats->prayer_xp, 0, '.', ',') : 'N/A' }}</td>
+                {{ $statSnapshot->prayer_xp > 0 ? number_format($statSnapshot->prayer_xp, 0, '.', ',') : 'N/A' }}</td>
         </tr>
         <tr>
             <td></td>
@@ -135,13 +136,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->magic_rank > 0 ? number_format($groupedStats->magic_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->magic_rank > 0 ? number_format($statSnapshot->magic_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->magic_level > 0 ? number_format($groupedStats->magic_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->magic_level > 0 ? number_format($statSnapshot->magic_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->magic_xp > 0 ? number_format($groupedStats->magic_xp, 0, '.', ',') : 'N/A' }}</td>
+                {{ $statSnapshot->magic_xp > 0 ? number_format($statSnapshot->magic_xp, 0, '.', ',') : 'N/A' }}</td>
         </tr>
         <tr>
             <td></td>
@@ -152,13 +153,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->overall_rank > 0 ? number_format($groupedStats->cooking_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->overall_rank > 0 ? number_format($statSnapshot->cooking_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->overall_rank > 0 ? number_format($groupedStats->cooking_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->overall_rank > 0 ? number_format($statSnapshot->cooking_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->overall_rank > 0 ? number_format($groupedStats->cooking_xp, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->overall_rank > 0 ? number_format($statSnapshot->cooking_xp, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>
@@ -170,13 +171,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->woodcutting_rank > 0 ? number_format($groupedStats->woodcutting_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->woodcutting_rank > 0 ? number_format($statSnapshot->woodcutting_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->woodcutting_level > 0 ? number_format($groupedStats->woodcutting_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->woodcutting_level > 0 ? number_format($statSnapshot->woodcutting_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->woodcutting_xp > 0 ? number_format($groupedStats->woodcutting_xp, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->woodcutting_xp > 0 ? number_format($statSnapshot->woodcutting_xp, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>
@@ -188,13 +189,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->fletching_rank > 0 ? number_format($groupedStats->fletching_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->fletching_rank > 0 ? number_format($statSnapshot->fletching_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->fletching_level > 0 ? number_format($groupedStats->fletching_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->fletching_level > 0 ? number_format($statSnapshot->fletching_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->fletching_xp > 0 ? number_format($groupedStats->fletching_xp, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->fletching_xp > 0 ? number_format($statSnapshot->fletching_xp, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>
@@ -206,13 +207,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->fishing_rank > 0 ? number_format($groupedStats->fishing_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->fishing_rank > 0 ? number_format($statSnapshot->fishing_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->fishing_level > 0 ? number_format($groupedStats->fishing_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->fishing_level > 0 ? number_format($statSnapshot->fishing_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->fishing_xp > 0 ? number_format($groupedStats->fishing_xp, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->fishing_xp > 0 ? number_format($statSnapshot->fishing_xp, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>
@@ -224,13 +225,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->firemaking_rank > 0 ? number_format($groupedStats->firemaking_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->firemaking_rank > 0 ? number_format($statSnapshot->firemaking_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->firemaking_level > 0 ? number_format($groupedStats->firemaking_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->firemaking_level > 0 ? number_format($statSnapshot->firemaking_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->firemaking_xp > 0 ? number_format($groupedStats->firemaking_xp, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->firemaking_xp > 0 ? number_format($statSnapshot->firemaking_xp, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>
@@ -242,13 +243,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->crafting_rank > 0 ? number_format($groupedStats->crafting_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->crafting_rank > 0 ? number_format($statSnapshot->crafting_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->crafting_level > 0 ? number_format($groupedStats->crafting_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->crafting_level > 0 ? number_format($statSnapshot->crafting_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->crafting_xp > 0 ? number_format($groupedStats->crafting_xp, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->crafting_xp > 0 ? number_format($statSnapshot->crafting_xp, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>
@@ -260,13 +261,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->smithing_rank > 0 ? number_format($groupedStats->smithing_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->smithing_rank > 0 ? number_format($statSnapshot->smithing_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->smithing_level > 0 ? number_format($groupedStats->smithing_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->smithing_level > 0 ? number_format($statSnapshot->smithing_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->smithing_xp > 0 ? number_format($groupedStats->smithing_xp, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->smithing_xp > 0 ? number_format($statSnapshot->smithing_xp, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>
@@ -278,13 +279,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->mining_rank > 0 ? number_format($groupedStats->mining_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->mining_rank > 0 ? number_format($statSnapshot->mining_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->mining_level > 0 ? number_format($groupedStats->mining_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->mining_level > 0 ? number_format($statSnapshot->mining_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->mining_xp > 0 ? number_format($groupedStats->mining_xp, 0, '.', ',') : 'N/A' }}</td>
+                {{ $statSnapshot->mining_xp > 0 ? number_format($statSnapshot->mining_xp, 0, '.', ',') : 'N/A' }}</td>
         </tr>
         <tr>
             <td></td>
@@ -295,13 +296,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->herblore_rank > 0 ? number_format($groupedStats->herblore_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->herblore_rank > 0 ? number_format($statSnapshot->herblore_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->herblore_level > 0 ? number_format($groupedStats->herblore_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->herblore_level > 0 ? number_format($statSnapshot->herblore_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->herblore_xp > 0 ? number_format($groupedStats->herblore_xp, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->herblore_xp > 0 ? number_format($statSnapshot->herblore_xp, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>
@@ -313,13 +314,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->agility_rank > 0 ? number_format($groupedStats->agility_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->agility_rank > 0 ? number_format($statSnapshot->agility_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->agility_level > 0 ? number_format($groupedStats->agility_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->agility_level > 0 ? number_format($statSnapshot->agility_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->agility_xp > 0 ? number_format($groupedStats->agility_xp, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->agility_xp > 0 ? number_format($statSnapshot->agility_xp, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>
@@ -331,13 +332,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->thieving_rank > 0 ? number_format($groupedStats->thieving_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->thieving_rank > 0 ? number_format($statSnapshot->thieving_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->thieving_level > 0 ? number_format($groupedStats->thieving_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->thieving_level > 0 ? number_format($statSnapshot->thieving_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->thieving_xp > 0 ? number_format($groupedStats->thieving_xp, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->thieving_xp > 0 ? number_format($statSnapshot->thieving_xp, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>
@@ -349,13 +350,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->slayer_rank > 0 ? number_format($groupedStats->slayer_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->slayer_rank > 0 ? number_format($statSnapshot->slayer_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->slayer_level > 0 ? number_format($groupedStats->slayer_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->slayer_level > 0 ? number_format($statSnapshot->slayer_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->slayer_xp > 0 ? number_format($groupedStats->slayer_xp, 0, '.', ',') : 'N/A' }}</td>
+                {{ $statSnapshot->slayer_xp > 0 ? number_format($statSnapshot->slayer_xp, 0, '.', ',') : 'N/A' }}</td>
         </tr>
         <tr>
             <td></td>
@@ -366,13 +367,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->farming_rank > 0 ? number_format($groupedStats->farming_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->farming_rank > 0 ? number_format($statSnapshot->farming_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->farming_level > 0 ? number_format($groupedStats->farming_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->farming_level > 0 ? number_format($statSnapshot->farming_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->farming_xp > 0 ? number_format($groupedStats->farming_xp, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->farming_xp > 0 ? number_format($statSnapshot->farming_xp, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>
@@ -384,13 +385,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->runecraft_rank > 0 ? number_format($groupedStats->runecraft_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->runecraft_rank > 0 ? number_format($statSnapshot->runecraft_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->runecraft_level > 0 ? number_format($groupedStats->runecraft_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->runecraft_level > 0 ? number_format($statSnapshot->runecraft_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->runecraft_xp > 0 ? number_format($groupedStats->runecraft_xp, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->runecraft_xp > 0 ? number_format($statSnapshot->runecraft_xp, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>
@@ -402,13 +403,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->hunter_rank > 0 ? number_format($groupedStats->hunter_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->hunter_rank > 0 ? number_format($statSnapshot->hunter_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->hunter_level > 0 ? number_format($groupedStats->hunter_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->hunter_level > 0 ? number_format($statSnapshot->hunter_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->hunter_xp > 0 ? number_format($groupedStats->hunter_xp, 0, '.', ',') : 'N/A' }}</td>
+                {{ $statSnapshot->hunter_xp > 0 ? number_format($statSnapshot->hunter_xp, 0, '.', ',') : 'N/A' }}</td>
 
         </tr>
         <tr>
@@ -420,13 +421,13 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $groupedStats->construction_rank > 0 ? number_format($groupedStats->construction_rank, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->construction_rank > 0 ? number_format($statSnapshot->construction_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->construction_level > 0 ? number_format($groupedStats->construction_level, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->construction_level > 0 ? number_format($statSnapshot->construction_level, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $groupedStats->construction_xp > 0 ? number_format($groupedStats->construction_xp, 0, '.', ',') : 'N/A' }}
+                {{ $statSnapshot->construction_xp > 0 ? number_format($statSnapshot->construction_xp, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
     </table>
