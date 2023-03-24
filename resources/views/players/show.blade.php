@@ -44,19 +44,17 @@
 
         <div class="grid grid-cols-1 items-start gap-4 md:gap-8 lg:grid-cols-2 lg:gap-12">
 
-            <x-graphs.total-xp-graph :totalXPGraphData="$totalXPGraphData"></x-graphs.total-xp-graph>
+            <x-graphs.total-xp-graph :totalXPGraphData="$totalXPGraphData" />
 
-            <x-graphs.total-rank-graph :totalRankGraphData="$totalRankGraphData"></x-graphs.total-rank-graph>
+            <x-graphs.total-rank-graph :totalRankGraphData="$totalRankGraphData" />
 
             <div class="space-y-4 md:space-y-8 lg:space-y-12">
-                <x-tables.total-stats-table :statSnapshot="$latestStatSnapshot" :player="$player"></x-tables.total-stats-table>
+                <x-tables.total-stats-table :statSnapshot="$latestStatSnapshot" :player="$player" />
 
-                <x-tables.total-activities-table :latestActivityStatSnapshots="$latestStatSnapshot" :activitySnapshotLast7Days="$statSnapshotLast7Days" :player="$player">
-                </x-tables.total-activities-table>
+                <x-tables.total-activities-table :latestActivityStatSnapshots="$latestStatSnapshot" :player="$player" />
             </div>
 
-            <x-tables.total-boss-kills-table :latestBossStatSnapshots="$latestStatSnapshot" :player="$player">
-            </x-tables.total-boss-kills-table>
+            <x-tables.total-boss-kills-table :latestBossStatSnapshots="$latestStatSnapshot" :player="$player" />
         </div>
     </div>
 </x-layouts.layout>

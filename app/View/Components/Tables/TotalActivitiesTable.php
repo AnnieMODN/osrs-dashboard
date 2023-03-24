@@ -9,18 +9,15 @@ use Illuminate\View\Component;
 class TotalActivitiesTable extends Component
 {
     public $latestActivityStatSnapshots;
-    public $activitySnapshotLast7Days;
     public $player;
     /**
      * Create a new component instance.
      */
     public function __construct(
         $latestActivityStatSnapshots,
-        $activitySnapshotLast7Days,
         $player,
     ) {
         $this->latestActivityStatSnapshots = $latestActivityStatSnapshots;
-        $this->activitySnapshotLast7Days = $activitySnapshotLast7Days;
         $this->player = $player;
     }
 
