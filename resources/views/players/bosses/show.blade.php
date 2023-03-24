@@ -1,163 +1,40 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<x-layouts.layout>
+    <div class="w-full">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <h2 class="mx-auto max-w-2xl text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            {{ Str::headline(ucfirst($boss)) }}
+        </h2>
 
-    <title>Laravel</title>
-    @vite('resources/css/app.css')
+        <div class="mt-8 flex justify-center">
+            <a class="text-white underline" href="/players/{{ $player->username }}">Back to Profile</a>
+        </div>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-
-</head>
-
-<body class="antialiased">
-    <div
-        class="relative mx-auto min-h-screen bg-gray-900 bg-center px-6 py-24 shadow-2xl sm:flex sm:items-center sm:justify-center sm:px-24 xl:py-32">
-
-        <div class="w-full">
-
-            <h2 class="mx-auto max-w-2xl text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                {{ Str::headline(ucfirst($boss)) }}
-            </h2>
-
-            <div class="mt-8 flex justify-center">
-                <a class="text-white underline" href="/players/{{ $player->username }}">Back to Profile</a>
-            </div>
-
-            <div class="my-8 grid gap-4 md:grid-cols-2 md:gap-8 lg:my-16 lg:gap-4">
-                <div
-                    class="rounded-lg bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6 lg:p-8">
-                    <p class="mb-2 text-2xl">{{ Str::headline(ucfirst($boss)) }} Score</p>
-                    <div class="flex items-center">
-                        <p class="mr-4 text-3xl font-bold">
-                            {{ $bossData->getAttribute("{$boss}_score") > 0 ? number_format($bossData->getAttribute("{$boss}_score"), 0, '.', ',') : 'N/A' }}
-                        </p>
-                        @if ($bossData->getAttribute("{$boss}_level") == 99)
-                            <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="25" height="25"
-                                fill="#ff9c66" stroke="#ff9c66" viewBox="0 0 512 512">
-                                <g>
-                                    <g>
-                                        <g>
-                                            <g>
-                                                <path
-                                                    d="M110.933 200.533c0 7.057 5.743 12.8 12.8 12.8s12.8-5.743 12.8-12.8-5.743-12.8-12.8-12.8-12.8 5.743-12.8 12.8zm17.067 0c0 2.355-1.92 4.267-4.267 4.267s-4.267-1.911-4.267-4.267c0-2.355 1.92-4.267 4.267-4.267s4.267 1.912 4.267 4.267zM418.611 91.972c2.278 2.526 5.871 3.43 9.062 2.338l11.042-3.78 7.637 9.421a8.509 8.509 0 0 0 9.48 2.671 8.53 8.53 0 0 0 5.683-8.038V82.79l12.348-6.17a8.541 8.541 0 0 0 0-15.274l-12.348-6.17V43.383a8.535 8.535 0 0 0-5.897-8.115c-3.499-1.126-7.364.102-9.54 3.098l-7.091 9.762-11.196-4.011a8.533 8.533 0 0 0-9.122 2.227 8.525 8.525 0 0 0-1.553 9.267l6.067 13.696-6.05 13.414a8.538 8.538 0 0 0 1.478 9.251zm22.05-25.25a8.539 8.539 0 0 0 5.649-.956 8.657 8.657 0 0 0 2.859 2.321l1.8.896-1.8.896a8.656 8.656 0 0 0-3.465 3.174 8.514 8.514 0 0 0-4.104-1.05c-.324 0-.649.009-.981.051.58-1.722.597-3.6.042-5.332zM247.467 49.621v86.912c0 4.71 3.814 8.533 8.533 8.533s8.533-3.823 8.533-8.533V49.63c9.908-3.541 17.067-12.92 17.067-24.03C281.6 11.486 270.114 0 256 0s-25.6 11.486-25.6 25.6c0 11.11 7.16 20.489 17.067 24.021zM256 17.067c4.71 0 8.533 3.831 8.533 8.533s-3.823 8.533-8.533 8.533-8.533-3.831-8.533-8.533 3.823-8.533 8.533-8.533zM375.467 200.533c0 7.057 5.743 12.8 12.8 12.8s12.8-5.743 12.8-12.8-5.743-12.8-12.8-12.8-12.8 5.743-12.8 12.8zm17.066 0c0 2.355-1.92 4.267-4.267 4.267S384 202.889 384 200.533c0-2.355 1.92-4.267 4.267-4.267s4.266 1.912 4.266 4.267zM311.467 136.533c7.057 0 12.8-5.743 12.8-12.8s-5.743-12.8-12.8-12.8-12.8 5.743-12.8 12.8 5.743 12.8 12.8 12.8zm0-17.066c2.347 0 4.267 1.911 4.267 4.267s-1.92 4.267-4.267 4.267-4.267-1.911-4.267-4.267 1.92-4.267 4.267-4.267zM318.234 193.766a8.51 8.51 0 0 0 6.033 2.5 8.509 8.509 0 0 0 6.033-2.5l76.8-76.8a8.523 8.523 0 0 0 0-12.066 8.523 8.523 0 0 0-12.066 0l-76.8 76.8a8.523 8.523 0 0 0 0 12.066zM200.533 136.533c7.057 0 12.8-5.743 12.8-12.8s-5.743-12.8-12.8-12.8-12.8 5.743-12.8 12.8 5.743 12.8 12.8 12.8zm0-17.066c2.347 0 4.267 1.911 4.267 4.267S202.88 128 200.533 128c-2.347 0-4.267-1.911-4.267-4.267s1.921-4.266 4.267-4.266zM181.7 193.766a8.51 8.51 0 0 0 6.033 2.5 8.534 8.534 0 0 0 6.033-2.492 8.534 8.534 0 0 0 0-12.075l-76.621-76.663c-3.337-3.337-8.738-3.328-12.075 0-3.328 3.328-3.328 8.738 0 12.066l76.63 76.664zM338.833 326.767a8.523 8.523 0 0 0-12.066 0 8.523 8.523 0 0 0 0 12.066l68.267 68.267a8.51 8.51 0 0 0 6.033 2.5 8.509 8.509 0 0 0 6.033-2.5 8.523 8.523 0 0 0 0-12.066l-68.267-68.267zM311.467 375.467c-7.057 0-12.8 5.743-12.8 12.8s5.743 12.8 12.8 12.8 12.8-5.743 12.8-12.8-5.743-12.8-12.8-12.8zm0 17.066a4.274 4.274 0 0 1-4.267-4.267c0-2.355 1.92-4.267 4.267-4.267s4.267 1.911 4.267 4.267a4.275 4.275 0 0 1-4.267 4.267zM401.067 311.467c0-7.057-5.743-12.8-12.8-12.8s-12.8 5.743-12.8 12.8 5.743 12.8 12.8 12.8 12.8-5.743 12.8-12.8zm-17.067 0c0-2.355 1.92-4.267 4.267-4.267s4.267 1.911 4.267 4.267-1.92 4.267-4.267 4.267-4.267-1.912-4.267-4.267zM37.649 66.637l9.762 7.091L43.4 84.915a8.54 8.54 0 0 0 2.227 9.131 8.509 8.509 0 0 0 5.803 2.278 8.515 8.515 0 0 0 3.465-.734l13.696-6.067 13.414 6.05a8.513 8.513 0 0 0 9.25-1.468 8.534 8.534 0 0 0 2.338-9.071l-3.78-11.042 9.421-7.629a8.513 8.513 0 0 0 2.671-9.481 8.52 8.52 0 0 0-8.038-5.683H82.074l-6.17-12.348c-2.901-5.786-12.373-5.786-15.275 0L54.46 51.2H42.667a8.528 8.528 0 0 0-8.115 5.897 8.533 8.533 0 0 0 3.097 9.54zm29.722-3.089.896-1.801.896 1.801a8.457 8.457 0 0 0 3.174 3.456 8.546 8.546 0 0 0-.998 5.086 8.747 8.747 0 0 0-2.722-.444c-.879 0-1.758.137-2.611.41a8.599 8.599 0 0 0-.956-5.641 8.78 8.78 0 0 0 2.321-2.867zM486.4 230.4c-11.11 0-20.489 7.151-24.021 17.067H349.867c-4.719 0-8.533 3.823-8.533 8.533s3.814 8.533 8.533 8.533h112.512c3.533 9.916 12.911 17.067 24.021 17.067 14.114 0 25.6-11.486 25.6-25.6s-11.486-25.6-25.6-25.6zm0 34.133c-4.71 0-8.533-3.831-8.533-8.533s3.823-8.533 8.533-8.533 8.533 3.831 8.533 8.533-3.823 8.533-8.533 8.533zM474.351 446.797l-9.762-7.091 4.011-11.196a8.536 8.536 0 0 0-2.227-9.131 8.525 8.525 0 0 0-9.267-1.544l-13.696 6.067-13.414-6.05a8.568 8.568 0 0 0-9.25 1.468 8.535 8.535 0 0 0-2.338 9.071l3.78 11.051-9.429 7.629a8.527 8.527 0 0 0-2.662 9.481 8.52 8.52 0 0 0 8.038 5.683h11.793l6.17 12.348a8.541 8.541 0 0 0 15.274 0l6.17-12.348h11.793a8.528 8.528 0 0 0 8.115-5.897 8.54 8.54 0 0 0-3.099-9.541zm-29.722 3.089-.896 1.8-.896-1.8a8.497 8.497 0 0 0-3.183-3.465 8.479 8.479 0 0 0 1.007-5.086 8.631 8.631 0 0 0 5.333.043 8.554 8.554 0 0 0 .964 5.641 8.61 8.61 0 0 0-2.329 2.867zM308.335 311.211c1.826-2.364 3.635-6.588 1.886-13.252-1.775-6.758-6.801-27.017-9.216-36.779l26.3-20.412c4.753-3.695 6.835-10.334 5.052-16.119-1.681-5.478-6.366-9.122-12.049-9.489-3.959-.324-24.841-2.185-34.731-3.063l-16.068-39.953c-2.475-6.17-7.603-10.01-13.389-10.01-6.11 0-11.315 4.258-13.107 10.342-1.493 4.045-10.411 28.74-14.345 39.612l-37.069 3.14c-5.734.486-10.274 4.113-11.836 9.464-1.655 5.649.384 12.049 4.949 15.548 2.398 1.843 19.831 14.626 28.467 20.949l-10.573 36.318c-2.278 6.699-.666 11.034 1.092 13.491 4.062 5.658 13.38 6.187 20.053 1.544 3.405-2.372 22.955-16.341 32.299-23.006 9.293 6.639 28.689 20.506 32.256 22.98 3.055 2.133 6.741 3.354 10.138 3.354 3.994 0 7.604-1.698 9.891-4.659zm-25.225-51.328s5.026 20.395 8.431 34.014c-10.897-7.757-30.524-21.794-30.524-21.794-1.485-1.067-3.226-1.596-4.966-1.596s-3.473.529-4.966 1.596c0 0-18.202 13.013-29.423 21.001l9.583-32.879a8.545 8.545 0 0 0-3.157-9.276s-16.776-12.271-26.496-19.439l33.963-2.876a8.536 8.536 0 0 0 7.305-5.598s8.781-24.311 13.594-37.615l15.241 37.896a8.528 8.528 0 0 0 7.159 5.316s20.574 1.835 32.538 2.884l-25.233 19.575a8.549 8.549 0 0 0-3.049 8.791zM110.933 311.467c0 7.057 5.743 12.8 12.8 12.8s12.8-5.743 12.8-12.8-5.743-12.8-12.8-12.8-12.8 5.743-12.8 12.8zm17.067 0c0 2.355-1.92 4.267-4.267 4.267s-4.267-1.911-4.267-4.267 1.92-4.267 4.267-4.267 4.267 1.911 4.267 4.267zM49.621 264.533h112.512c4.719 0 8.533-3.823 8.533-8.533s-3.814-8.533-8.533-8.533H49.621C46.089 237.551 36.71 230.4 25.6 230.4 11.486 230.4 0 241.886 0 256s11.486 25.6 25.6 25.6c11.11 0 20.489-7.151 24.021-17.067zm-24.021 0c-4.71 0-8.533-3.831-8.533-8.533s3.823-8.533 8.533-8.533c4.71 0 8.533 3.831 8.533 8.533s-3.823 8.533-8.533 8.533zM93.389 421.461c-2.278-2.517-5.871-3.439-9.062-2.338l-11.042 3.78-7.637-9.421c-2.278-2.807-6.076-3.9-9.481-2.671a8.53 8.53 0 0 0-5.683 8.038v11.793l-12.348 6.17a8.541 8.541 0 0 0 0 15.274l12.348 6.17v11.793a8.535 8.535 0 0 0 15.437 5.017l7.091-9.762 11.196 4.011a8.488 8.488 0 0 0 9.131-2.227 8.54 8.54 0 0 0 1.545-9.267l-6.067-13.696 6.05-13.414a8.537 8.537 0 0 0-1.478-9.25zm-22.05 25.25a8.545 8.545 0 0 0-5.649.956 8.657 8.657 0 0 0-2.859-2.321l-1.801-.896 1.801-.896a8.656 8.656 0 0 0 3.465-3.174 8.458 8.458 0 0 0 5.086.998 8.559 8.559 0 0 0-.043 5.333zM200.533 375.467c-7.057 0-12.8 5.743-12.8 12.8s5.743 12.8 12.8 12.8 12.8-5.743 12.8-12.8-5.743-12.8-12.8-12.8zm0 17.066a4.274 4.274 0 0 1-4.267-4.267 4.274 4.274 0 0 1 4.267-4.267 4.274 4.274 0 0 1 4.267 4.267 4.274 4.274 0 0 1-4.267 4.267zM264.533 462.37V332.8c0-4.71-3.814-8.533-8.533-8.533s-8.533 3.823-8.533 8.533v129.57c-9.907 3.541-17.067 12.919-17.067 24.03 0 14.114 11.486 25.6 25.6 25.6s25.6-11.486 25.6-25.6c0-11.11-7.159-20.489-17.067-24.03zM256 494.933c-4.71 0-8.533-3.831-8.533-8.533s3.823-8.533 8.533-8.533 8.533 3.831 8.533 8.533-3.823 8.533-8.533 8.533zM185.233 326.767a8.523 8.523 0 0 0-12.066 0L104.9 395.034a8.523 8.523 0 0 0 0 12.066 8.51 8.51 0 0 0 6.033 2.5 8.509 8.509 0 0 0 6.033-2.5l68.267-68.267a8.523 8.523 0 0 0 0-12.066z" />
-                                            </g>
-                                        </g>
-                                    </g>
-                                </g>
-                            </svg>
-                        @endif
-                    </div>
-                </div>
-                <div
-                    class="rounded-lg bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6 lg:p-8">
-                    <p class="mb-2 text-2xl">{{ Str::headline(ucfirst($boss)) }} Rank</p>
-                    <p class="w-full text-3xl font-bold">
-                        {{ $bossData->getAttribute("{$boss}_rank") > 0 ? number_format($bossData->getAttribute("{$boss}_rank"), 0, '.', ',') : 'N/A' }}
+        <div class="my-8 grid grid-cols-1 items-start gap-4 md:gap-8 lg:my-16 lg:grid-cols-2 lg:gap-12">
+            <div
+                class="rounded-lg bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6 lg:p-8">
+                <p class="mb-2 text-2xl">{{ Str::headline(ucfirst($boss)) }} Score</p>
+                <div class="flex items-center">
+                    <p class="mr-4 text-3xl font-bold">
+                        {{ $bossData->getAttribute("{$boss}_score") > 0 ? number_format($bossData->getAttribute("{$boss}_score"), 0, '.', ',') : 'N/A' }}
                     </p>
                 </div>
             </div>
-
-            {{-- @dd($skillGraphData) --}}
-
-            <div class="grid gap-4 md:gap-6 lg:grid-cols-2 lg:gap-12">
-                <div x-data="{
-                    init() {
-                            let chart = new ApexCharts(this.$refs.chart, this.options)
-                
-                            chart.render()
-                        },
-                        get options() {
-                            return {
-                                chart: { type: 'area', toolbar: false },
-                                tooltip: {
-                                    marker: false,
-                                },
-                                series: [{
-                                    name: '{{ ucfirst($boss) }} XP',
-                                    data: {{ Js::from($bossXpGraphData) }},
-                                }],
-                                xaxis: {
-                                    type: 'datetime',
-                                },
-                                yaxis: {
-                                    labels: {
-                                        formatter: function(val, opt) {
-                                            return Intl.NumberFormat('en-GB', {
-                                                    notation: 'compact',
-                                                    maximumFractionDigits: 2
-                                                })
-                                                .format(val);
-                                        }
-                                    }
-                                },
-                                dataLabels: {
-                                    formatter: function(val, opt) {
-                                        return Intl.NumberFormat('en-GB', {
-                                                notation: 'compact',
-                                                maximumFractionDigits: 2
-                                            })
-                                            .format(val);
-                                    }
-                                }
-                            }
-                        }
-                }"
-                    class="w-full rounded-lg bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6 lg:p-8">
-                    <div x-ref="chart" class="rounded-lg bg-white p-2 shadow-sm lg:p-8"></div>
-                </div>
-
-                <div x-data="{
-                    init() {
-                            let chart = new ApexCharts(this.$refs.chart, this.options)
-                
-                            chart.render()
-                        },
-                        get options() {
-                            return {
-                                chart: { type: 'area', toolbar: false },
-                                tooltip: {
-                                    marker: false,
-                                },
-                                series: [{
-                                    name: '{{ ucfirst($boss) }} Rank',
-                                    data: {{ Js::from($bossRankGraphData) }},
-                                }],
-                                xaxis: {
-                                    type: 'datetime',
-                                },
-                                yaxis: {
-                                    labels: {
-                                        formatter: function(val, opt) {
-                                            return Intl.NumberFormat('en-GB', {
-                                                    notation: 'compact',
-                                                    maximumFractionDigits: 2
-                                                })
-                                                .format(val);
-                                        }
-                                    }
-                                },
-                                dataLabels: {
-                                    formatter: function(val, opt) {
-                                        return Intl.NumberFormat('en-GB', {
-                                                notation: 'compact',
-                                                maximumFractionDigits: 2
-                                            })
-                                            .format(val);
-                                    }
-                                }
-                            }
-                        }
-                }"
-                    class="w-full rounded-lg bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6 lg:p-8">
-                    <div x-ref="chart" class="rounded-lg bg-white p-2 shadow-sm lg:p-8"></div>
-                </div>
-
+            <div
+                class="rounded-lg bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6 lg:p-8">
+                <p class="mb-2 text-2xl">{{ Str::headline(ucfirst($boss)) }} Rank</p>
+                <p class="w-full text-3xl font-bold">
+                    {{ $bossData->getAttribute("{$boss}_rank") > 0 ? number_format($bossData->getAttribute("{$boss}_rank"), 0, '.', ',') : 'N/A' }}
+                </p>
             </div>
         </div>
-</body>
 
-</html>
+        <div class="grid grid-cols-1 items-start gap-4 md:gap-8 lg:grid-cols-2 lg:gap-12">
+
+            <x-graphs.total-boss-score-graph :boss="$boss" :bossScoreGraphData="$bossScoreGraphData" />
+
+            <x-graphs.total-boss-rank-graph :boss="$boss" :bossRankGraphData="$bossRankGraphData" />
+
+        </div>
+
+    </div>
+</x-layouts.layout>

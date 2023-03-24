@@ -13,7 +13,14 @@ class ActivityStatsSnapshotController extends Controller
         $activity = Str::of($activity)->replace('-', '_')->snake()->toString();
 
         $activityData = $player->statSnapshots()->latest()->first(["{$activity}_score", "{$activity}_rank"]);
-        $activityXpGraphData = $player->statSnapshots()->orderBy('created_at')->get(["{$activity}_score", 'created_at'])
+
+        $statSnapshotLastSevenDays = $player->statSnapshots()
+            ->where("{$activity}_rank", '>', 0)
+            ->where('created_at', '>', now()->subDays(7))
+            ->orderBy('created_at')
+            ->get(["{$activity}_score", "{$activity}_rank", 'created_at']);
+
+        $activityScoreGraphData = $statSnapshotLastSevenDays
             ->map(function ($activitySnapshot) use ($activity) {
                 return [
                     'x' => $activitySnapshot->created_at->toDateString(),
@@ -22,11 +29,11 @@ class ActivityStatsSnapshotController extends Controller
             })
             ->toArray();
 
-        $activityRankGraphData = $player->statSnapshots()->orderBy('created_at')->get(["{$activity}_rank", 'created_at'])
+        $activityRankGraphData = $statSnapshotLastSevenDays
             ->map(function ($activitySnapshot) use ($activity) {
                 return [
                     'x' => $activitySnapshot->created_at->toDateString(),
-                    'y' => $activitySnapshot->getAttribute("{$activity}_rank")
+                    'y' => max($activitySnapshot->getAttribute("{$activity}_rank") ?? 0, 0)
                 ];
             })
             ->toArray();
@@ -35,7 +42,7 @@ class ActivityStatsSnapshotController extends Controller
             'player' => $player,
             'activity' => $activity,
             'activityData' => $activityData,
-            'activityXpGraphData' => $activityXpGraphData,
+            'activityScoreGraphData' => $activityScoreGraphData,
             'activityRankGraphData' => $activityRankGraphData
         ]);
     }

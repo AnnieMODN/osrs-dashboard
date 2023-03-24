@@ -6,16 +6,20 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class TotalRankGraph extends Component
+class TotalSkillRankGraph extends Component
 {
-    public $totalRankGraphData;
+    public $skill;
+    public $skillRankGraphData;
 
     /**
      * Create a new component instance.
      */
-    public function __construct($totalRankGraphData)
-    {
-        $this->totalRankGraphData = $totalRankGraphData;
+    public function __construct(
+        $skill,
+        $skillRankGraphData
+    ) {
+        $this->skill = $skill;
+        $this->skillRankGraphData = $skillRankGraphData;
     }
 
     /**
@@ -23,6 +27,6 @@ class TotalRankGraph extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.graphs.total-rank-graph');
+        return view('components.graphs.total-skill-rank-graph');
     }
 }

@@ -43,7 +43,7 @@
         <tr>
             <td></td>
             <td class="text-left">
-                <a href="/players/{{ $player->username }}/bosses/barrows"
+                <a href="/players/{{ $player->username }}/bosses/barrows-chests"
                     class="underline hover:underline md:no-underline">
                     Barrows Chests
                 </a>

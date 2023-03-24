@@ -14,7 +14,13 @@ class BossStatsSnapshotController extends Controller
 
         $bossData = $player->statSnapshots()->latest()->first(["{$boss}_score", "{$boss}_rank"]);
 
-        $bossXpGraphData = $player->statSnapshots()->orderBy('created_at')->get(["{$boss}_score", 'created_at'])
+        $statSnapshotLastSevenDays = $player
+            ->statSnapshots()->where("{$boss}_score", '>', 0)
+            ->where('created_at', '>', now()->subDays(7))
+            ->orderBy('created_at')
+            ->get(["{$boss}_score", "{$boss}_rank", 'created_at']);
+
+        $bossScoreGraphData = $statSnapshotLastSevenDays
             ->map(function ($bossSnapshot) use ($boss) {
                 return [
                     'x' => $bossSnapshot->created_at->toDateString(),
@@ -23,7 +29,7 @@ class BossStatsSnapshotController extends Controller
             })
             ->toArray();
 
-        $bossRankGraphData = $player->statSnapshots()->orderBy('created_at')->get(["{$boss}_rank", 'created_at'])
+        $bossRankGraphData = $statSnapshotLastSevenDays
             ->map(function ($bossSnapshot) use ($boss) {
                 return [
                     'x' => $bossSnapshot->created_at->toDateString(),
@@ -36,7 +42,7 @@ class BossStatsSnapshotController extends Controller
             'player' => $player,
             'boss' => $boss,
             'bossData' => $bossData,
-            'bossXpGraphData' => $bossXpGraphData,
+            'bossScoreGraphData' => $bossScoreGraphData,
             'bossRankGraphData' => $bossRankGraphData
         ]);
     }

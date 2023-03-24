@@ -14,9 +14,12 @@ class PlayersController extends Controller
 
         $latestStatSnapshot = $player->statSnapshots()->latest()->first();
 
-        $statSnapshotLast7Days = $player->statSnapshots()->where('created_at', '>', now()->subDays(7))->get();
+        $statSnapshotLastSevenDays = $player->statSnapshots()
+            ->where('created_at', '>', now()->subDays(7))
+            ->orderBy('created_at')
+            ->get(['overall_rank', 'overall_xp', 'created_at']);
 
-        $totalXPGraphData = $player->statSnapshots()->orderBy('created_at')->get(['overall_xp', 'created_at'])
+        $totalXPGraphData = $statSnapshotLastSevenDays
             ->map(function ($statSnapshot) {
                 return [
                     'x' => $statSnapshot->created_at->toDateString(),
@@ -25,7 +28,7 @@ class PlayersController extends Controller
             })
             ->toArray();
 
-        $totalRankGraphData = $player->statSnapshots()->orderBy('created_at')->get(['overall_rank', 'created_at'])
+        $totalRankGraphData = $statSnapshotLastSevenDays
             ->map(function ($statSnapshot) {
                 return [
                     'x' => $statSnapshot->created_at->toDateString(),
@@ -37,7 +40,6 @@ class PlayersController extends Controller
         return view('players.show', [
             'player' => $player,
             'latestStatSnapshot' => $latestStatSnapshot,
-            'statSnapshotLast7Days' => $statSnapshotLast7Days,
             'totalXPGraphData' => $totalXPGraphData,
             'totalRankGraphData' => $totalRankGraphData,
         ]);

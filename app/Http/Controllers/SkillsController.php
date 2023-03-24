@@ -10,10 +10,15 @@ class SkillsController extends Controller
 {
     public function show(Player $player, $skill)
     {
-        // return $latestStatSnapshot = $player->statSnapshots()->get(["{$skill}_xp", "{$skill}_rank"]);
-
         $statsData = $player->statSnapshots()->latest()->first(["{$skill}_xp", "{$skill}_rank", "{$skill}_level"]);
-        $skillXpGraphData = $player->statSnapshots()->orderBy('created_at')->get(["{$skill}_xp", 'created_at'])
+
+        $statSnapshotLastSevenDays = $player->statSnapshots()
+            ->where("{$skill}_xp", '>', 0)
+            ->where('created_at', '>', now()->subDays(7))
+            ->orderBy('created_at')
+            ->get(["{$skill}_rank", "{$skill}_xp", 'created_at']);
+
+        $skillXpGraphData = $statSnapshotLastSevenDays
             ->map(function ($statSnapshot) use ($skill) {
                 return [
                     'x' => $statSnapshot->created_at->toDateString(),
@@ -22,7 +27,7 @@ class SkillsController extends Controller
             })
             ->toArray();
 
-        $skillRankGraphData = $player->statSnapshots()->orderBy('created_at')->get(["{$skill}_rank", 'created_at'])
+        $skillRankGraphData = $statSnapshotLastSevenDays
             ->map(function ($statSnapshot) use ($skill) {
                 return [
                     'x' => $statSnapshot->created_at->toDateString(),
