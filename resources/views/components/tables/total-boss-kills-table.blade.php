@@ -418,7 +418,7 @@
         <tr>
             <td></td>
             <td class="text-left">
-                <a href="/players/{{ $player->username }}/bosses/attack"
+                <a href="/players/{{ $player->username }}/bosses/nex"
                     class="underline hover:underline md:no-underline">
                     Nex
                 </a>
@@ -553,7 +553,7 @@
         <tr>
             <td></td>
             <td class="text-left">
-                <a href="/players/{{ $player->username }}/bosses/gauntlet"
+                <a href="/players/{{ $player->username }}/bosses/the-gauntlet"
                     class="underline hover:underline md:no-underline">
                     The Gauntlet
                 </a>
@@ -568,7 +568,7 @@
         <tr>
             <td></td>
             <td class="text-left">
-                <a href="/players/{{ $player->username }}/bosses/corrupted-gauntlet"
+                <a href="/players/{{ $player->username }}/bosses/the-corrupted-gauntlet"
                     class="underline hover:underline md:no-underline">
                     The Corrupted Gauntlet
                 </a>
@@ -643,7 +643,7 @@
         <tr>
             <td></td>
             <td class="text-left">
-                <a href="/players/{{ $player->username }}/bosses/tombs-of-amascut-expert"
+                <a href="/players/{{ $player->username }}/bosses/tombs-of-amascut-expert-mode"
                     class="underline hover:underline md:no-underline">
                     Tombs of Amascut: Expert Mode
                 </a>
@@ -658,7 +658,7 @@
         <tr>
             <td></td>
             <td class="text-left">
-                <a href="/players/{{ $player->username }}/bosses/tztok-zuk"
+                <a href="/players/{{ $player->username }}/bosses/tzkal-zuk"
                     class="underline hover:underline md:no-underline">
                     TzKal-Zuk
                 </a>
@@ -748,7 +748,7 @@
         <tr>
             <td></td>
             <td class="text-left">
-                <a href="/players/{{ $player->username }}/bosses/zalcano"
+                <a href="/players/{{ $player->username }}/bosses/zolcano"
                     class="underline hover:underline md:no-underline">
                     Zalcano
                 </a>
