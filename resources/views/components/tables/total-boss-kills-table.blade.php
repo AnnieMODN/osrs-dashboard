@@ -1,6 +1,6 @@
 <div
     class="row-span-2 h-auto w-full rounded-lg bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6 lg:p-8">
-    <div class="mb-6 flex flex-col text-center text-xl font-bold">
+    <div class="flex flex-col mb-6 text-xl font-bold text-center">
         Boss Kills for {{ $player->username }}
     </div>
     <table class="w-full">
@@ -38,6 +38,21 @@
             </td>
             <td class="text-right">
                 {{ $latestBossStatSnapshots->alchemical_hydra_score > 0 ? number_format($latestBossStatSnapshots->alchemical_hydra_score, 0, '.', ',') : 'N/A' }}
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-left">
+                <a href="/players/{{ $player->username }}/bosses/artio"
+                    class="underline hover:underline md:no-underline">
+                    Artio
+                </a>
+            </td>
+            <td class="text-right">
+                {{ $latestBossStatSnapshots->artio_rank > 0 ? number_format($latestBossStatSnapshots->artio_rank, 0, '.', ',') : 'N/A' }}
+            </td>
+            <td class="text-right">
+                {{ $latestBossStatSnapshots->artio_score > 0 ? number_format($latestBossStatSnapshots->artio_score, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>
@@ -83,6 +98,21 @@
             </td>
             <td class="text-right">
                 {{ $latestBossStatSnapshots->callisto_score > 0 ? number_format($latestBossStatSnapshots->callisto_score, 0, '.', ',') : 'N/A' }}
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-left">
+                <a href="/players/{{ $player->username }}/bosses/calvarion"
+                    class="underline hover:underline md:no-underline">
+                    Cal'varion
+                </a>
+            </td>
+            <td class="text-right">
+                {{ $latestBossStatSnapshots->calvarion_rank > 0 ? number_format($latestBossStatSnapshots->calvarion_rank, 0, '.', ',') : 'N/A' }}
+            </td>
+            <td class="text-right">
+                {{ $latestBossStatSnapshots->calvarion_score > 0 ? number_format($latestBossStatSnapshots->calvarion_score, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>
@@ -533,6 +563,21 @@
             </td>
             <td class="text-right">
                 {{ $latestBossStatSnapshots->skotizo_score > 0 ? number_format($latestBossStatSnapshots->skotizo_score, 0, '.', ',') : 'N/A' }}
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-left">
+                <a href="/players/{{ $player->username }}/bosses/spindel"
+                    class="underline hover:underline md:no-underline">
+                    Spindel
+                </a>
+            </td>
+            <td class="text-right">
+                {{ $latestBossStatSnapshots->spindel_rank > 0 ? number_format($latestBossStatSnapshots->spindel_rank, 0, '.', ',') : 'N/A' }}
+            </td>
+            <td class="text-right">
+                {{ $latestBossStatSnapshots->spindel_score > 0 ? number_format($latestBossStatSnapshots->spindel_score, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>
