@@ -11,7 +11,7 @@
                     marker: false,
                 },
                 series: [{
-                    name: 'Total XP',
+                    name: 'Total Rank',
                     data: {{ Js::from($totalRankGraphData) }},
                 }],
                 xaxis: {
@@ -46,6 +46,6 @@
             }
         }
 }"
-    class="w-full rounded-lg bg-white/5 p-4 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6 lg:p-8">
-    <div x-ref="chart" class="rounded-lg bg-white px-2 py-4 text-black shadow-sm lg:p-8"></div>
+    class="w-full p-4 text-white rounded-lg shadow-sm bg-white/5 ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6 lg:p-8">
+    <div x-ref="chart" class="px-2 py-4 text-black bg-white rounded-lg shadow-sm lg:p-8"></div>
 </div>
