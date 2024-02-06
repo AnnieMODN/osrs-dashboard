@@ -1,6 +1,6 @@
 <div
     class="row-span-2 h-auto w-full rounded-lg bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-white sm:text-sm sm:leading-6 lg:p-8">
-    <div class="mb-6 flex flex-col text-center text-xl font-bold">
+    <div class="flex flex-col mb-6 text-xl font-bold text-center">
         Activity Completions {{ $player->username }}
     </div>
     {{-- @dd($activitySnapshotLast7Days) --}}
@@ -40,6 +40,36 @@
             </td>
             <td class="text-right">
                 {{ $latestActivityStatSnapshots->bounty_hunter_rogue_score > 0 ? number_format($latestActivityStatSnapshots->bounty_hunter_rogue_score, 0, '.', ',') : 'N/A' }}
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-left">
+                <a href="/players/{{ $player->username }}/activities/bounty-hunter-legacy-hunter"
+                    class="underline hover:underline md:no-underline">
+                    Bounty Hunter (Legacy) - Hunter
+                </a>
+            </td>
+            <td class="text-right">
+                {{ $latestActivityStatSnapshots->bounty_hunter_legacy_rouge_rank > 0 ? number_format($latestActivityStatSnapshots->bounty_hunter_legacy_rouge_rank, 0, '.', ',') : 'N/A' }}
+            </td>
+            <td class="text-right">
+                {{ $latestActivityStatSnapshots->bounty_hunter_legacy_rouge_score > 0 ? number_format($latestActivityStatSnapshots->bounty_hunte_legacy_rouger_score, 0, '.', ',') : 'N/A' }}
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-left">
+                <a href="/players/{{ $player->username }}/activities/bounty-hunter-legacy-rogue"
+                    class="underline hover:underline md:no-underline">
+                    Bounty Hunter - Rogue
+                </a>
+            </td>
+            <td class="text-right">
+                {{ $latestActivityStatSnapshots->bounty_hunter_legacy_rogue_rank > 0 ? number_format($latestActivityStatSnapshots->bounty_hunter_legacy_rogue_rank, 0, '.', ',') : 'N/A' }}
+            </td>
+            <td class="text-right">
+                {{ $latestActivityStatSnapshots->bounty_hunter_legacy_rogue_score > 0 ? number_format($latestActivityStatSnapshots->bounty_hunter_legacy_rogue_score, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>

@@ -298,16 +298,31 @@
         <tr>
             <td></td>
             <td class="text-left">
+                <a href="/players/{{ $player->username }}/bosses/duke_sucellus"
+                    class="underline hover:underline md:no-underline">
+                    Duke Sucellus
+                </a>
+            </td>
+            <td class="text-right">
+                {{ $latestBossStatSnapshots->duke_sucellus_rank > 0 ? number_format($latestBossStatSnapshots->duke_sucellus_rank, 0, '.', ',') : 'N/A' }}
+            </td>
+            <td class="text-right">
+                {{ $latestBossStatSnapshots->duke_sucellus_score > 0 ? number_format($latestBossStatSnapshots->duke_sucellus_score, 0, '.', ',') : 'N/A' }}
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-left">
                 <a href="/players/{{ $player->username }}/bosses/general-graardor"
                     class="underline hover:underline md:no-underline">
                     General Graardor
                 </a>
             </td>
             <td class="text-right">
-                {{ $latestBossStatSnapshots->general_graador_rank > 0 ? number_format($latestBossStatSnapshots->general_graador_rank, 0, '.', ',') : 'N/A' }}
+                {{ $latestBossStatSnapshots->general_graardor_rank > 0 ? number_format($latestBossStatSnapshots->general_graardor_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $latestBossStatSnapshots->general_graador_score > 0 ? number_format($latestBossStatSnapshots->general_graador_score, 0, '.', ',') : 'N/A' }}
+                {{ $latestBossStatSnapshots->general_graardor_score > 0 ? number_format($latestBossStatSnapshots->general_graardor_score, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>
@@ -424,10 +439,10 @@
                 </a>
             </td>
             <td class="text-right">
-                {{ $latestBossStatSnapshots->krill_tsutsaroth_rank > 0 ? number_format($latestBossStatSnapshots->krill_tsutsaroth_rank, 0, '.', ',') : 'N/A' }}
+                {{ $latestBossStatSnapshots->kril_tsutsaroth_rank > 0 ? number_format($latestBossStatSnapshots->kril_tsutsaroth_rank, 0, '.', ',') : 'N/A' }}
             </td>
             <td class="text-right">
-                {{ $latestBossStatSnapshots->krill_tsutsaroth_score > 0 ? number_format($latestBossStatSnapshots->krill_tsutsaroth_score, 0, '.', ',') : 'N/A' }}
+                {{ $latestBossStatSnapshots->kril_tsutsaroth_score > 0 ? number_format($latestBossStatSnapshots->kril_tsutsaroth_score, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>
@@ -553,6 +568,21 @@
         <tr>
             <td></td>
             <td class="text-left">
+                <a href="/players/{{ $player->username }}/bosses/scurrius"
+                    class="underline hover:underline md:no-underline">
+                    Scurrius
+                </a>
+            </td>
+            <td class="text-right">
+                {{ $latestBossStatSnapshots->scurrius_rank > 0 ? number_format($latestBossStatSnapshots->scurrius_rank, 0, '.', ',') : 'N/A' }}
+            </td>
+            <td class="text-right">
+                {{ $latestBossStatSnapshots->scurrius_score > 0 ? number_format($latestBossStatSnapshots->scurrius_score, 0, '.', ',') : 'N/A' }}
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-left">
                 <a href="/players/{{ $player->username }}/bosses/skotizo"
                     class="underline hover:underline md:no-underline">
                     Skotizo
@@ -623,6 +653,36 @@
             </td>
             <td class="text-right">
                 {{ $latestBossStatSnapshots->the_corrupted_gauntlet_score > 0 ? number_format($latestBossStatSnapshots->the_corrupted_gauntlet_score, 0, '.', ',') : 'N/A' }}
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-left">
+                <a href="/players/{{ $player->username }}/bosses/the-leviathan"
+                    class="underline hover:underline md:no-underline">
+                    The Leviathan
+                </a>
+            </td>
+            <td class="text-right">
+                {{ $latestBossStatSnapshots->the_leviathan_rank > 0 ? number_format($latestBossStatSnapshots->the_leviathan_rank, 0, '.', ',') : 'N/A' }}
+            </td>
+            <td class="text-right">
+                {{ $latestBossStatSnapshots->the_leviathan_score > 0 ? number_format($latestBossStatSnapshots->the_leviathan_score, 0, '.', ',') : 'N/A' }}
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-left">
+                <a href="/players/{{ $player->username }}/bosses/the-whisperer"
+                    class="underline hover:underline md:no-underline">
+                    The Whisperer
+                </a>
+            </td>
+            <td class="text-right">
+                {{ $latestBossStatSnapshots->the_whisperer_rank > 0 ? number_format($latestBossStatSnapshots->the_whisperer_rank, 0, '.', ',') : 'N/A' }}
+            </td>
+            <td class="text-right">
+                {{ $latestBossStatSnapshots->the_whisperer_score > 0 ? number_format($latestBossStatSnapshots->the_whisperer_score, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>
@@ -728,6 +788,21 @@
             </td>
             <td class="text-right">
                 {{ $latestBossStatSnapshots->tztok_jad_score > 0 ? number_format($latestBossStatSnapshots->tztok_jad_score, 0, '.', ',') : 'N/A' }}
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="text-left">
+                <a href="/players/{{ $player->username }}/bosses/vardorvis"
+                    class="underline hover:underline md:no-underline">
+                    Vardorvis
+                </a>
+            </td>
+            <td class="text-right">
+                {{ $latestBossStatSnapshots->vardorvis_rank > 0 ? number_format($latestBossStatSnapshots->vardorvis_rank, 0, '.', ',') : 'N/A' }}
+            </td>
+            <td class="text-right">
+                {{ $latestBossStatSnapshots->vardorvis_score > 0 ? number_format($latestBossStatSnapshots->vardorvis_score, 0, '.', ',') : 'N/A' }}
             </td>
         </tr>
         <tr>
